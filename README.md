@@ -39,13 +39,21 @@ In the file `/etc/ssh/sshd_config`, I change `Port 22` to `Port 2200`, then used
 
 ### postgreSQL
 Created 'catalog' database user: `sudo -u postgres createuser -P catalog`
+
 Created database: `sudo -u postgres createdb -O catalog catalog`
+
 Set up catalog user with:
+
 `ALTER ROLE catalog WITH PASSWORD 'catalog';`
+
 `ALTER USER catalog CREATEDB;`
+
 `ALTER DATABASE catalog OWNER TO catalog;`
+
 Used `\c catalog` to enter database, then:
+
 `REVOKE ALL ON SCHEMA public FROM public;`
+
 `GRANT ALL ON SCHEMA public TO catalog;'`
 
 ### Not needed
@@ -96,7 +104,11 @@ I followed [the instructions here](https://www.digitalocean.com/community/tutori
 
 ##Resources
 https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-14-04
+
 https://docs.google.com/document/d/1pvE6os2ctLevO_EBmg3Leq4VEc1DbORcxQ_zpPqVr78/edit
+
 https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
+
 http://docs.sqlalchemy.org/en/latest/core/engines.html
+
 https://www.digitalocean.com/community/tutorials/how-to-secure-postgresql-on-an-ubuntu-vps
