@@ -37,6 +37,8 @@ Enable firewall:
 
 In the file `/etc/ssh/sshd_config`, I change `Port 22` to `Port 2200`, then used `sudo service ssh restart`.
 
+Can now SSH in remotely using: `ssh grader@34.207.99.196 -i ~/.ssh/awsGraderKey -p 2200`
+
 ### postgreSQL
 Created 'catalog' database user: `sudo -u postgres createuser -P catalog`
 
