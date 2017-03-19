@@ -102,7 +102,7 @@ Then in `/etc/apache2/sites-available$` I created the file `NGO_Emporium.conf` w
 
 I followed [the instructions here](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps) to navigate through the virtual environment process. After a bunch of troubleshooting, the site was then live.
 
-##Resources
+## Resources
 https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-14-04
 
 https://docs.google.com/document/d/1pvE6os2ctLevO_EBmg3Leq4VEc1DbORcxQ_zpPqVr78/edit
