@@ -17,11 +17,13 @@ Other installed software includes: apache2, flask, git, mod-wsgi, postgresql, oa
 Add `custom TCP 2200` to 'Firewall' section of 'Networking' tab for server instance in Lightsail.
 
 Set defaults to deny all incoming connections and allow all outgoing:
+
 `sudo ufw default deny incoming`
 
 `sudo ufw default allow outgoing`
 
 Allow incoming connections on port 2200 (for SSH), port 80 (for HTTP) and port 123 (for NTP):
+
 `sudo ufw allow 2200/tcp`
 
 `sudo ufw allow www`
