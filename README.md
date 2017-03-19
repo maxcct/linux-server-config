@@ -1,17 +1,19 @@
 # linux-server-config
-Account of the process of configuring a Linux server to serve my NGO Emporium app
+Account of the process of configuring a Linux server to serve my NGO Emporium app.
 
-##IP Address
+## IP Address
 `34.207.99.196`
-##URL
+## URL
 `http://ec2-34-207-99-196.compute-1.amazonaws.com/`
 
-##Software installed
+
+## Software installed
 Everything installed by `sudo apt-get update` + `sudo apt-get upgrade`.
 Other installed software includes: apache2, flask, git, mod-wsgi, postgresql, oauth2client, sqlalchemy, httplib2, requests, flask-seasurf.
 
-##Configurations
-###Firewall
+
+## Configurations
+### Firewall
 Add `custom TCP 2200` to 'Firewall' section of 'Networking' tab for server instance in Lightsail.
 
 Set defaults to deny all incoming connections and allow all outgoing:
@@ -26,11 +28,11 @@ Allow incoming connections on port 2200 (for SSH), port 80 (for HTTP) and port 1
 Enable firewall:
 `sudo ufw enable`
 
-###SSH port
+### SSH port
 
 In the file `/etc/ssh/sshd_config`, I change `Port 22` to `Port 2200`, then used `sudo service ssh restart`.
 
-###postgreSQL
+### postgreSQL
 Created 'catalog' database user: `sudo -u postgres createuser -P catalog`
 Created database: `sudo -u postgres createdb -O catalog catalog`
 Set up catalog user with:
@@ -41,10 +43,11 @@ Used `\c catalog` to enter database, then:
 `REVOKE ALL ON SCHEMA public FROM public;`
 `GRANT ALL ON SCHEMA public TO catalog;'`
 
-###Not needed
+### Not needed
 I did not need to disable root login or change the time zone, as these were already at the correct settings.
 
-##Setting up app
+
+## Setting up app
 I cloned my app repository into `/var/www`, and rearranged the directory structure as required.
 
 I renamed `project.py` to `__init__.py` and changed `engine = create_engine('sqlite:///ngosandusers.db')` to `engine = create_engine('postgresql://catalog:catalog@localhost/catalog')`. I also made this change in `database_setup.py`. I then removed all `functools` fuctionality from the app, as `functools` appears to be impossible to install properly on an Ubuntu server (I managed to install it once, but then pip broke completely, and I had to scrap the whole instance).
